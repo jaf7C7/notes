@@ -1,0 +1,27 @@
+# Renew (Re-register) Red Hat Developer Subscription (Free tier)
+
+1. Open developers.redhat.com in an Incognito window
+2. Use your Red Hat login ID to sign in to the site.
+3. Acknowledge the provided Terms and Conditions.
+4. Log out of all Red Hat sites and close your browser(s).
+5. Wait 15 to 20 minutes, then log in to access.redhat.com/management.
+6. You should now see a new Red Hat Developer for Individuals Subscription on your account.
+
+Troubleshooting:
+
+You might need to remove and then re-attach your license after accepting the new terms and conditions for your system to recognize the renewed subscription:
+
+```
+sudo subscription-manager remove --all
+sudo subscription-manager unregister
+sudo subscription-manager clean
+sudo subscription-manager register
+sudo subscription-manager refresh
+sudo subscription-manager attach --auto
+```
+
+Sources:
+
+<https://developers.redhat.com/articles/renew-your-red-hat-developer-program-subscription>
+<https://access.redhat.com/discussions/4957691>
+

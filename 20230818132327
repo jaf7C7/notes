@@ -1,0 +1,6 @@
+# Where to see logs on Red Hat
+
+`/var/log/messages`
+
+You may want to `tail -F`
+

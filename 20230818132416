@@ -1,0 +1,17 @@
+# How to change firewall settings Red Hat
+
+`firewalld`
+
+Summary:
+
+* A 'zone' is a set of allowed services
+* A 'service' is a set of allowed ports and rules
+* Make a new 'zone' (can copy the current one) and define your own allowed services
+* You can also make your own services (e.g. py-http with port=8080)
+* Make sure to do `firewall-cmd --reload` to enable changes
+* You can do it either via editing .xml files manually or running commands, they do the same thing
+* If you get an error check `/var/log/messages` (grep for the error message)
+
+
+[Documentation](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/using-and-configuring-firewalld_configuring-and-managing-networking)
+

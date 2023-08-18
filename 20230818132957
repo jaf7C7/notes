@@ -1,0 +1,6 @@
+# How to set up a simple python HTTP server in your Red Hat VM
+
+* Start the server in whatever directory with `python -m http.server` and it should start listening on port `8000`
+* [Change firewall settings](20230818132416) to allow access to port 8000 from another machine
+* Open up a browser on the host and go to `http://<guest-ip>:8000` and you should see the directory contents
+
