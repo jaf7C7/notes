@@ -1,0 +1,25 @@
+# Turn off `^S` (XON/XOFF) terminal flow control
+
+
+In PuTTY (best option):
+
+> 1. before creating the session go navigate to Connection->SSH->TTY in the list.
+> 2. in the "Mode" dropdown box, select IXON (nb: as of version 0.60, this list is not
+>    alphabetically ordered)
+> 3. put "0" (zero) as the value of IXON.
+
+Source: <https://superuser.com/a/376881>
+
+
+In `~/.profile` or terminal session (must be done per host):
+
+```shell
+stty -ixon
+```
+
+Source: <https://superuser.com/a/124873>
+
+
+See also:
+
+* <https://en.wikipedia.org/wiki/Software_flow_control>
