@@ -1,0 +1,17 @@
+# Pipe python script stdout to a command
+
+```python
+import os
+import sys
+import subprocess
+
+tty = os.dup(sys.stdout.fileno())
+
+pipe_out, pipe_in = os.pipe()
+
+sys.stdout = open(pipe_in, 'w')
+
+subprocess.Popen(['head', '-1'], stdin=pipe_out, stdout=tty)
+
+print('foo\nbar\nbaz')
+```

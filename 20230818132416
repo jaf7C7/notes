@@ -1,16 +1,58 @@
-# How to change firewall settings Red Hat
+# Red Hat (RHEL) Firewall Configuration
 
-`firewalld`
 
-Summary:
+## Summary
 
-* A 'zone' is a set of allowed services
-* A 'service' is a set of allowed ports and rules
-* Make a new 'zone' (can copy the current one) and define your own allowed services
-* You can also make your own services (e.g. py-http with port=8080)
-* Make sure to do `firewall-cmd --reload` to enable changes
-* You can do it either via editing .xml files manually or running commands, they do the same thing
-* If you get an error check `/var/log/messages` (grep for the error message)
+* `firewalld` controls the firewall
+* `firewall-cmd` is the `firewalld` CLI
+* A `zone` is a set of allowed services.
+* A `service` is a set of allowed ports and rules.
+* Default/fallback configuration files (do not edit): `/usr/lib/firewalld/`
+  System/user configuration files (edited manually or via `firewall-cmd`):
+  `/etc/firewalld`.
+
+
+## Examples
+
+Check the current firewall configuration
+```
+$ firewalld-cmd --list-all
+```
+
+Reload the defaults
+```
+$ sudo firewall-cmd --reload
+```
+
+Open a port the quick and dirty way (runtime only, not saved):
+```
+# Open port 5000 for TCP traffic for 1 hour (timeout optional)
+$ sudo firewall-cmd --add-port=5000/tcp --timeout=1h
+
+# Check the port is open
+$ sudo firewall-cmd --list-ports
+
+Create a new reusable service for e.g. the python flask development server
+```
+# Create a new service by copying a similar default service. In this example we create
+# the `flask-http` service from `http` (for the python `flask` server)
+$ sudo cp /usr/lib/firewalld/services/http.xml /etc/firewalld/flask-http.xml
+
+# Customise the service how you want (e.g. change port from 80 -> 5000)
+$ sudo vi /etc/firewalld/flask-http.xml
+
+# Load the new service file
+firewall-cmd --reload
+
+# Check the service is available
+firewall-cmd --info-service=flask-http
+
+# Enable the service (runtime only, use '--permanent' to save, or '--timeout' to timeout)
+$ sudo firewall-cmd --add-service=flask-http
+
+# Remove the service
+$ sudo firewall-cmd --remove-service=flask-http
+```
 
 
 [Documentation](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/using-and-configuring-firewalld_configuring-and-managing-networking)
