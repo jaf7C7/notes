@@ -1,0 +1,31 @@
+# Project ideas
+
+* Look at [Public APIs](https://publicapis.io/)
+  + [**Discogs API**](https://www.discogs.com/developers/)
+    - A complete CLI for the discogs API?
+    - Study this <https://github.com/jesseward/discogs-oauth-example>
+    - Use the [discogs client](https://github.com/joalla/discogs_client)
+  + [Real Estate API](https://gist.github.com/patpohler/36c731113fd113418c0806f62cbb9e30)
+  + [Property Data API](https://propertydata.co.uk/api)
+  + [Food Standards Agency Ratings API](https://ratings.food.gov.uk/open-data)
+  + [UK Parliament API](https://explore.data.parliament.uk/?learnmore=Members)
+  + [ONS API](https://developer.ons.gov.uk/)
+  + [City Observatory data](https://www.cityobservatory.birmingham.gov.uk/)
+  + List of crimes -> Select a crime -> Gender breakdown of sentencing
+* A web app to help the job search
+  + <https://github.com/toddmotto/public-apis#jobs>
+  + Research similar apps
+  + Searches several different sites for various keywords and aggregates the
+    results.
+  + Results can then be filtered etc.
+  + Login page
+* Create your own API
+* A CRUD application
+* Something with the [WolframAlpha API](https://products.wolframalpha.com/api/)
+* User authentication and authorisation
+* Notifications via email
+* Deploy at least one project to an Amazon EC2 instance
+* Deploy at least one project using Docker
+* A simple calculator web app with a nice design (Vanilla CSS/JS)
+* A maze solver (practice algorithms and data structures)
+* A Discogs web crawler (learn about web networking)

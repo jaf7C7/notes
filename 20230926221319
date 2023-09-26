@@ -1,0 +1,8 @@
+# Set up a minimal desktop environment on Devuan linux
+
+1. download the minimal boot iso
+2. install the system (standard system utilities and ssh server but *no desktop env*)
+3. sudo apt install lxde uxterm
+4. install a nice font:
+   - run: `sudo apt install xfonts-terminus && xset fp rehash && xlsfonts | grep terminus`
+   - follow this: https://www.genunix.com/dclarke/termingus/readme.txt
