@@ -1,0 +1,13 @@
+# Get hex value of a char
+
+`od -t x1`
+
+`x1` -> Convert each byte to hexadecimal
+`xN` -> Convert each N-byte sequence to hexadecimal
+
+Examples:
+```
+$ printf '£' | od -t x1
+0000000 c2 a3
+0000002
+```

@@ -1,0 +1,9 @@
+# Get decimal ascii value of a char
+
+`printf '%d\n' \'${char}`
+
+Examples:
+```
+$ printf '%d\n' \'a
+97
+```

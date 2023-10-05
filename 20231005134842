@@ -1,0 +1,11 @@
+# Get number of bytes in a character
+
+`wc -c`
+
+Examples:
+```
+$ echo 'a' | wc -c
+1
+$ echo '€' | wc -c
+3
+```
