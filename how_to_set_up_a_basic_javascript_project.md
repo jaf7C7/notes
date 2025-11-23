@@ -2,16 +2,29 @@
 
 ```
 $ npm init
+$ npm init @eslint/config@latest
 $ npm install --save-dev jest @babel/preset-env
 ```
 
-`jest` is our testing framework of choice but it requires some configuration to be able to be used how we want.
+`npm init` will prompt you for project information which is used to create a
+`package.json` file for your project.
 
-`@babel/preset-env` is a set of presets for `babel` which `jest` calls implicitly to transpile your code to be compatible with different versions of javascript.
+`npm init @eslint/config@latest` will prompt you for more project information
+which is used to create an `eslint.config.js` file.
 
-In order to use newer browser-compatible ES6 `import` syntax, instead of older node-specific `require` syntax, we need to add some configuration to `package.json`:
+`jest` is our testing framework of choice but it requires some configuration to
+be able to be used how we want.
 
-**Without this configuration you will get "SyntaxError: Cannot use import statement outside a module" when trying to run your tests.**
+`@babel/preset-env` is a set of presets for `babel` which `jest` calls
+implicitly to transpile your code to be compatible with different versions of
+javascript.
+
+In order to use newer browser-compatible ES6 `import` syntax, instead of older
+node-specific `require` syntax, we need to add some configuration to
+`package.json`:
+
+**Without this configuration you will get "SyntaxError: Cannot use import
+statement outside a module" when trying to run your tests.**
 
 ```
 {
@@ -37,14 +50,20 @@ In order to use newer browser-compatible ES6 `import` syntax, instead of older n
 }
 ```
 
-This will apply the correct `babel` presets so your code will be transpiled to target the currently installed version of node.
+This will apply the correct `babel` presets so your code will be transpiled to
+target the currently installed version of node.
 
-Now you can write tests using ES6 module syntax and run them using `jest`, and `babel` will be invoked by `jest` to transpile your code into something which it can run.
+Now you can write tests using ES6 module syntax and run them using `jest`, and
+`babel` will be invoked by `jest` to transpile your code into something which
+it can run.
 
 For example:
 
 ```javascript
-import next from './life.js'
+// `jest` will run the tests fine without this line but `eslint` will
+// complain if it's missing.
+import { test, expect } from '@jest/globals';
+import next from './life.js';
 
 test('a live cell with no neighbours dies', () => {
     cells = [(0, 0)];
@@ -54,6 +73,7 @@ test('a live cell with no neighbours dies', () => {
 
 ## Sources:
 
-[Writing Tests That Don’t Suck - Test Driven Development in JavaScript | David Whitney](https://www.youtube.com/watch?v=wVNTQHM-a0Y)
+[Writing Tests That Don’t Suck - Test Driven Development in JavaScript | David
+Whitney](https://www.youtube.com/watch?v=wVNTQHM-a0Y)
 
 [Getting Started - Jest](https://jestjs.io/docs/getting-started)
