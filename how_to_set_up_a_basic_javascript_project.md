@@ -3,7 +3,7 @@
 ```
 $ npm init
 $ npm init @eslint/config@latest
-$ npm install --save-dev jest @babel/preset-env
+$ npm install --save-dev prettier jest @babel/preset-env
 ```
 
 `npm init` will prompt you for project information which is used to create a
@@ -12,8 +12,9 @@ $ npm install --save-dev jest @babel/preset-env
 `npm init @eslint/config@latest` will prompt you for more project information
 which is used to create an `eslint.config.js` file.
 
-`jest` is our testing framework of choice but it requires some configuration to
-be able to be used how we want.
+`prettier` is our chosen formatter.
+
+`jest` is our testing framework of choice.
 
 `@babel/preset-env` is a set of presets for `babel` which `jest` calls
 implicitly to transpile your code to be compatible with different versions of
@@ -23,17 +24,13 @@ In order to use newer browser-compatible ES6 `import` syntax, instead of older
 node-specific `require` syntax, we need to add some configuration to
 `package.json`:
 
-**Without this configuration you will get "SyntaxError: Cannot use import
-statement outside a module" when trying to run your tests.**
+**Without this configuration you will get `SyntaxError: Cannot use import
+statement outside a module` when trying to run your tests.**
 
 ```
 {
   ...
   "type": "module",
-  ...
-  "scripts": {
-    "test": "jest"
-  },
   ...
   "babel": {
     "presets": [
@@ -52,6 +49,19 @@ statement outside a module" when trying to run your tests.**
 
 This will apply the correct `babel` presets so your code will be transpiled to
 target the currently installed version of node.
+
+We can also add some useful scripts to `package.json` to run with `npm run <script>`:
+
+```
+{
+  ...
+  "scripts": {
+    "test": "jest",
+    "format": "prettier",
+    "lint": "eslint"
+  }
+}
+```
 
 Now you can write tests using ES6 module syntax and run them using `jest`, and
 `babel` will be invoked by `jest` to transpile your code into something which
@@ -77,3 +87,5 @@ test('a live cell with no neighbours dies', () => {
 Whitney](https://www.youtube.com/watch?v=wVNTQHM-a0Y)
 
 [Getting Started - Jest](https://jestjs.io/docs/getting-started)
+
+[Getting Started - ESLint](https://eslint.org/docs/latest/use/getting-started)
