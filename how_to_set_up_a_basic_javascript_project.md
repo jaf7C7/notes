@@ -3,7 +3,7 @@
 ```
 $ npm init
 $ npm init @eslint/config@latest
-$ npm install --save-dev prettier nodemon jest @babel/preset-env
+$ npm install --save-dev prettier jest @babel/preset-env
 ```
 
 `npm init` will prompt you for project information which is used to create a
@@ -13,8 +13,6 @@ $ npm install --save-dev prettier nodemon jest @babel/preset-env
 which is used to create an `eslint.config.js` file.
 
 `prettier` is our chosen formatter.
-
-`nodemon` is a file-watch which we can use to run arbitray commands when files change.
 
 `jest` is our testing framework of choice.
 
@@ -84,8 +82,15 @@ test('a live cell with no neighbours dies', () => {
 });
 ```
 
-## 
+## File watchers
 
+These can be installed locally, but it's easier to just run them with `npx`:
+
+```
+# `onchange` has nicer interface as you don't have to quote everything.
+$ npx onchange <glob> -- <command> [<arg>...]
+$ npx nodemon --watch <glob> --exec '<command> [<arg>...]'
+```
 
 ## Sources:
 
