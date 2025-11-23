@@ -3,7 +3,7 @@
 ```
 $ npm init
 $ npm init @eslint/config@latest
-$ npm install --save-dev prettier jest @babel/preset-env
+$ npm install --save-dev prettier nodemon jest @babel/preset-env
 ```
 
 `npm init` will prompt you for project information which is used to create a
@@ -13,6 +13,8 @@ $ npm install --save-dev prettier jest @babel/preset-env
 which is used to create an `eslint.config.js` file.
 
 `prettier` is our chosen formatter.
+
+`nodemon` is a file-watch which we can use to run arbitray commands when files change.
 
 `jest` is our testing framework of choice.
 
@@ -58,7 +60,8 @@ We can also add some useful scripts to `package.json` to run with `npm run <scri
   "scripts": {
     "test": "jest",
     "format": "prettier",
-    "lint": "eslint"
+    "lint": "eslint",
+    "watch": "nodemon --exec \"sh -c 'eslint && jest && prettier'\"
   }
 }
 ```
@@ -80,6 +83,9 @@ test('a live cell with no neighbours dies', () => {
     expect(next(cells)).toEqual([]);
 });
 ```
+
+## 
+
 
 ## Sources:
 
