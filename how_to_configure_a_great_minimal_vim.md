@@ -17,6 +17,11 @@ set hidden
 
 " Automatically re-read current file on events like `^Z`, `fg` etc. This
 " is great if you have an external file-watcher formatting files.
+" Some autocommands to try if you want the buffer to update without leaving vim:
+" - Re-read current file after cursor is inactive for 'updatetime':
+" 	au CursorHold,CursorHoldI * checktime
+" - Re-read the current file when cursor is moved in any mode:
+" 	au CursorMoved,CursorMovedC,CursorMovedI * checktime
 set autoread
 
 " Autocomplete in command-mode with `Tab`.
@@ -48,3 +53,5 @@ if has('syntax')
     syntax off
 endif
 ```
+
+
